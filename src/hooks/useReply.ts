@@ -10,7 +10,7 @@ function useReply(threadId: number):[DetailThreadType | undefined,(data: ThreadD
     queryFn: () => api.FindOneThread(threadId),
     })
   
-    function onReply(data: ThreadDataType): void {
+    function Reply(data: ThreadDataType): void {
         const formData: FormData = new FormData()
         
         formData.append('content', data.content)
@@ -34,7 +34,7 @@ function useReply(threadId: number):[DetailThreadType | undefined,(data: ThreadD
     }
 
 
-    return [thread,onReply]
+    return [thread,Reply]
 }
 
 export { useReply }
