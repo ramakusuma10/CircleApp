@@ -1,0 +1,115 @@
+{
+    "status": "success",
+    "data": {
+        "Threads": [
+            {
+                "id": 1,
+                "content": {
+                    "ThreadPhoto": null,
+                    "Thread":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed justo semper, fauci bus quam in, condimentum lectus. Phasellus eu ex arcu."
+
+                },
+                "user": {
+                    "id": 101,
+                    "username": "@xavihernandez",
+                    "name": "Xavi Hernandez",
+                    "profilePicture": "https://api.dicebear.com/8.x/adventurer/svg?seed=Dusty&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                },
+                "createdAt": "2023-07-31T12:34:56Z",
+                "likes": 10,
+                "replies": 5,
+                "isLiked": true
+            },
+            {
+                "id": 2,
+                "content": {
+                    "ThreadPhoto": null,
+                    "Thread":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed justo semper, fauci bus quam in, condimentum lectus. Phasellus eu ex arcu."
+
+                },
+                "user": {
+                    "id": 102,
+                    "username": "@ramakusuma",
+                    "name": "Rama Kusuma",
+                    "profilePicture": "https://api.dicebear.com/8.x/adventurer/svg?seed=Max&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                },
+                "createdAt": "2023-07-31T13:45:21Z",
+                "likes": 15,
+                "replies": 3,
+                "isLiked": false
+            },
+            {
+                "id": 3,
+                "content": {
+                    "ThreadPhoto": null,
+                    "Thread":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed justo semper, fauci bus quam in, condimentum lectus. Phasellus eu ex arcu."
+
+                },
+                "user": {
+                    "id": 103,
+                    "username": "@lamineyamal",
+                    "name": "Lamine Yamal",
+                    "profilePicture": "https://api.dicebear.com/8.x/adventurer/svg?seed=Simba&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                },
+                "createdAt": "2023-07-31T13:45:21Z",
+                "likes": 15,
+                "replies": 3,
+                "isLiked": false
+            },
+            {
+                "id": 4,
+                "content": {
+                    "ThreadPhoto": null,
+                    "Thread":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed justo semper, fauci bus quam in, condimentum lectus. Phasellus eu ex arcu."
+
+                },
+                "user": {
+                    "id": 104,
+                    "username": "@marcusrashford",
+                    "name": "Marcus Rashford",
+                    "profilePicture": "https://api.dicebear.com/8.x/adventurer/svg?seed=Scooter&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                },
+                "createdAt": "2023-07-31T12:34:56Z",
+                "likes": 10,
+                "replies": 5,
+                "isLiked": true
+            },
+            {
+                "id": 5,
+                "content": {
+                    "ThreadPhoto": null,
+                    "Thread":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed justo semper, fauci bus quam in, condimentum lectus. Phasellus eu ex arcu."
+
+                },
+                "user": {
+                    "id": 105,
+                    "username": "@fifapresiden",
+                    "name": "Gianni Infantino",
+                    "profilePicture": "https://api.dicebear.com/8.x/adventurer/svg?seed=Coco&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                },
+                "createdAt": "2023-07-31T13:45:21Z",
+                "likes": 15,
+                "replies": 3,
+                "isLiked": false
+            },
+            {
+                "id": 6,
+                "content": {
+                    "ThreadPhoto": "https://redigest.web.id/wp-content/uploads/2019/03/amtrak.jpeg",
+                    "Thread":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed justo semper, fauci bus quam in, condimentum lectus. Phasellus eu ex arcu."
+
+                },
+                "user": {
+                    "id": 106,
+                    "username": "@mudryk",
+                    "name": "Mudryk",
+                    "profilePicture": "https://api.dicebear.com/8.x/adventurer/svg?seed=Loki&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+                },
+                "createdAt": "2023-07-31T13:45:21Z",
+                "likes": 15,
+                "replies": 3,
+                "isLiked": false
+            }
+        ]
+    }
+}
