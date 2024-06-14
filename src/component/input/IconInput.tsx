@@ -1,25 +1,36 @@
 import { Box, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
-import { BiSearchAlt } from 'react-icons/bi'
+import { ReactNode } from 'react'
+import { FieldValues, Path, UseFormRegister } from 'react-hook-form'
 
-function IconInput() {
+
+interface IconInputProps<T extends FieldValues> {
+    icon: ReactNode
+    name: Path<T>
+    placeholder: string
+    type: string
+    register: UseFormRegister<T>
+}
+function IconInput<T extends FieldValues>(props: IconInputProps<T>) {
+    const { icon, type, placeholder, name, register } = props
     return (
-        <Box px={'1rem'}>
+        <Box px={'15px'}>
             <Stack spacing={4}>
                 <InputGroup color={'circle-dark'}>
                     <InputLeftElement pointerEvents={'none'} color={'circle.dark'}>
                         <Box ml={'15px'}>
-                            <BiSearchAlt />
+                            {icon}
                         </Box>
                     </InputLeftElement>
                     <Input
-                        type="text"
+                        type={type}
                         pl={'38px'}
-                        placeholder="Search.."
+                        placeholder={placeholder}
                         border={'2px'}
                         borderColor={'transparent'}
                         borderRadius={'2xl'}
                         bg={'circle.darker'}
                         color={'circle.font'}
+                        autoFocus
                         _active={{
                             background: 'none',
                             boxShadow: 'none',
@@ -36,6 +47,7 @@ function IconInput() {
                             borderColor: 'circle.green',
                         }}
                         _placeholder={{ color: 'circle.dark' }}
+                        {...register(name)}
                     />
                 </InputGroup>
             </Stack>

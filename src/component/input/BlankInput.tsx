@@ -7,7 +7,7 @@ interface BlankInputProps {
     value?: string
 }
 
-function BlankInput({ type, placeholder }: BlankInputProps) {
+function BlankInput({ type, placeholder,value}: BlankInputProps) {
     return (
         <Input
             type={type}
@@ -18,6 +18,8 @@ function BlankInput({ type, placeholder }: BlankInputProps) {
             placeholder={placeholder}
             fontSize={fontSizing.small}
             color={'circle.font'}
+            variant={'flushed'}
+            value={value}
             _active={{
                 background: 'none',
                 boxShadow: 'none',
