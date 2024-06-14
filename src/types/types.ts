@@ -118,5 +118,5 @@ export interface EditUserType {
     username: string
     fullname: string
     avatar: string
-    bio: string
+    bio: string | null
 }
