@@ -1,4 +1,4 @@
-import {LoginType, RegisterType, ResetType, ForgotType,EditUserType } from '../types/types'
+import {LoginType, RegisterType, ResetType, ForgotType, } from '../types/types'
 import { z, ZodType } from 'zod'
 
 export const LoginSchema: ZodType<LoginType> = z.object({
@@ -55,38 +55,30 @@ export const ThreadSchema: ZodType = z.object({
     content: z
         .string()
         .min(1, {
-            message: 'Vibe must not be empty.',
+            message: 'thread must not be empty.',
         })
         .max(255, {
-            message: 'Vibe must be less than 255 chars.',
+            message: 'thread must be less than 255 chars.',
         }),
     image: z.any(),
 })
 
-export const UserSchema: ZodType<EditUserType> = z.object({
+export const UserSchema: ZodType = z.object({
     username: z
         .string()
-        .min(1, {
-            message: 'Vibe must not be empty.',
+        .min(4, {
+            message: 'Username must be at least 4 chars long.',
         })
-        .max(255, {
-            message: 'Vibe must be less than 255 chars.',
-        }),
+        .max(255),
     fullname: z
         .string()
         .min(1, {
-            message: 'Vibe must not be empty.',
-        })
-        .max(255, {
-            message: 'Vibe must be less than 255 chars.',
+            message: 'Name must be at least 4 chars long.',
         }),
     bio: z
         .string()
         .min(1, {
-            message: 'Vibe must not be empty.',
-        })
-        .max(255, {
-            message: 'Vibe must be less than 255 chars.',
+            message: 'Bio must not be empty.',
         }),
     avatar: z.string(),
 
