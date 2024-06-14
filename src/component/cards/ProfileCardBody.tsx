@@ -2,20 +2,23 @@ import { Text, CardBody } from '@chakra-ui/react'
 import { fontSizing } from '../../styles/style'
 
 interface ProfileCardBodyProps {
+    username: string
+    fullname: string
+    bio: string | null
     py?: string
 }
 
-function ProfileCardBody({py = '5px'}:ProfileCardBodyProps){
+function ProfileCardBody({username, fullname, bio, py = '5px'}:ProfileCardBodyProps){
     return(
         <CardBody padding={0} py={py}>
         <Text fontSize={fontSizing.big} fontWeight={'700'}>
-        Gianni Infantino 
+            {fullname}
         </Text>
         <Text color={'circle.dark'} fontSize={fontSizing.small} mb={'8px'}>
-        @fifapresiden
+            @{username}
         </Text>
         <Text fontSize={fontSizing.small}>
-        I go my way. We have embraced reforms. We have embraced transparency. We have embraced good governance. We have turned a page.
+            {bio && <Text fontSize={fontSizing.small}>{bio}</Text>}
         </Text>
     </CardBody>
     )
