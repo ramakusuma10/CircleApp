@@ -6,16 +6,17 @@ import { UserType } from '../../types/types'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { useState } from 'react'
+import api from '../../libs/api'
 
 interface ThreadItemFooterProps {
-    ThreadId: number
+    threadId: number
     totalLike: number
     totalReply: number
     isLiked: boolean
     user: UserType
 }
 
-function ThreadItemFooter({ ThreadId, totalLike, totalReply, isLiked, user }: ThreadItemFooterProps) {
+function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked, user }: ThreadItemFooterProps) {
     const loggedUser = useSelector((states: RootState) => states.loggedUser.value)
     const [isThreadLiked, setThreadLiked] = useState<boolean>(isLiked)
     const [totalThreadLike, setTotalThreadLike] = useState<number>(totalLike)
@@ -23,7 +24,7 @@ function ThreadItemFooter({ ThreadId, totalLike, totalReply, isLiked, user }: Th
     
     async function onLike() {
         try {
-            await API.TOGGLE_LIKE(ThreadId)
+            await api.like(threadId)
 
             setThreadLiked((oldState) => !oldState)
             setTotalThreadLike((oldState) => {

@@ -4,16 +4,16 @@ import { dateFormatter } from '../../utils/dateFormatter'
 
 
 interface ThreadItemHeaderProps {
-    name: string
+    fullname: string
     username: string
     date: string
 }
 
-function ThreadItemHeader({ name, username, date }: ThreadItemHeaderProps) {
+function ThreadItemHeader({ fullname, username, date }: ThreadItemHeaderProps) {
     return (
         <CardHeader display={'flex'} gap={'8px'} alignItems={'end'} padding={0}>
             <Text fontSize={fontSizing.small} fontWeight={'700'}>
-                {name}
+                {fullname}
             </Text>
             <Text fontSize={fontSizing.small} color={'circle.dark'}>
                 {username}

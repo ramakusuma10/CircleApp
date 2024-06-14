@@ -25,19 +25,19 @@ function ThreadItem({thread,noImage,noHover}: ThreadItemProps) {
                         <Avatar src={user.avatar} />
                         <Flex direction={'column'} gap={'4px'} width={'100%'}>
                             <ThreadItemHeader
-                                name={user.name}
+                                fullname={user.fullname}
                                 username={`@${user.username}`}
                                 date={createdAt}
                             />
                             <ThreadItemBody
-                                ThreadId={id}
-                                ThreadContent={content}
-                                ThreadImage={image}
+                                threadId={id}
+                                threadContent={content}
+                                threadImage={image}
                                 noImage={noImage && noImage}
                                 onOpen={onOpen}
                             />
                             <ThreadItemFooter
-                                ThreadId={id}
+                                threadId={id}
                                 totalLike={totallikes}
                                 totalReply={totalreplies}
                                 isLiked={isLiked}

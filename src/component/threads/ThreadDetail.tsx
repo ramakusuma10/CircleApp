@@ -26,7 +26,7 @@ function ThreadDetail({ thread,noImage,Reply }: ThreadDetailProps) {
 
     useEffect(() => {
         async function getUsers() {
-            const users: UserType[] = await api.GET_ALL_USERS()
+            const users: UserType[] = await api.FindAllUser()
             setUsers(users)
         }
 
