@@ -1,9 +1,9 @@
 import { Box, FormControl, Input } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
-import { LoginType } from '../types/types'
-import { LoginSchema } from '../validator/validator'
+import { LoginType } from '../../types/types'
+import { LoginSchema } from '../../validator/validator'
 import { zodResolver } from '@hookform/resolvers/zod'
-import SolidButton from '../component/button/solidButton'
+import SolidButton from '../../component/button/solidButton'
 
 interface LoginInputProps {
     onLogin: (data: LoginType) => void

@@ -1,5 +1,5 @@
 import { Collapse, FormControl, Text, Textarea } from '@chakra-ui/react'
-import { fontSizing } from '../styles/style'
+import { fontSizing } from '../../styles/style'
 import { FieldError, UseFormRegister, FieldValues, Path } from 'react-hook-form'
 
 interface ThreadInputProps<T extends FieldValues> {

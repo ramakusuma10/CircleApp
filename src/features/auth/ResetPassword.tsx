@@ -1,10 +1,10 @@
 import { Box, FormControl, Input, Text } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
-import { ResetType } from '../types/types'
-import { ResetSchema } from '../validator/validator'
+import { ResetType } from '../../types/types'
+import { ResetSchema } from '../../validator/validator'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import SolidButton from '../component/button/solidButton'
+import SolidButton from '../../component/button/solidButton'
 
 interface ResetInputProps {
     onReset: (data: ResetType) => void

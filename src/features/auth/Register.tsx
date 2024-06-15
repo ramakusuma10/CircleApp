@@ -1,10 +1,10 @@
 import { Box, FormControl, Input } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
-import { RegisterType } from '../types/types'
-import { RegisterSchema } from '../validator/validator'
+import { RegisterType } from '../../types/types'
+import { RegisterSchema } from '../../validator/validator'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import SolidButton from '../component/button/solidButton'
+import SolidButton from '../../component/button/solidButton'
 
 interface RegisterInputProps {
     onRegister: (data: RegisterType) => void
