@@ -1,7 +1,7 @@
 import { Flex, Spacer, Image } from '@chakra-ui/react'
 import { BiSolidHome, BiSearchAlt, BiHeart, BiUser, BiLogOut } from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../hooks/hooks'
+import { useDispatch } from 'react-redux'
 import { unsetLoggedUser } from '../../redux/auth/authSlice'
 import API from '../../libs/api'
 
@@ -13,7 +13,7 @@ interface MenuProps {
 }
 
 function Menu({onOpen}: MenuProps) {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     async function onLogout() {
