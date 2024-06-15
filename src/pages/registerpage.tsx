@@ -10,8 +10,8 @@ import {
 import { fontSizing } from '../styles/style'
 import { RegisterType } from '../types/types'
 
-import RegisterForm from '../features/Register'
-import API from '../libs/api'
+import RegisterForm from '../features/auth/Register'
+import api from '../libs/api'
 
 function RegisterPage() {
         const navigate = useNavigate()
@@ -20,7 +20,7 @@ function RegisterPage() {
         async function onRegister(data: RegisterType): Promise<void> {
             try {
 
-                await API.REGISTER(data)
+                await api.Register(data)
                 navigate('/login')
                 toast({
                     title: "Register success!",

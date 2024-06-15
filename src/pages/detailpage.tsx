@@ -10,30 +10,36 @@ import SuggestionCard from '../component/cards/SuggestionCard'
 import DeveloperCard from '../component/cards/DeveloperCard'
 import MenuHeading from '../component/navigations/Menuheading'
 import ThreadDetail from '../component/threads/ThreadDetail'
+import { useReply } from '../hooks/useReply'
 
 function DetailPage() {
     const { id }: Readonly<Params<string>> = useParams()
-    const parsedId: number = id ? parseInt(id, 10) : NaN
+    const targetId: number = id ? +id : NaN
 
-    return (
-        <Grid templateColumns={'repeat(19, 1fr)'}>
-            <GridItem colSpan={12}>
-                <MainBar>
-                    <Link to={'/'}>
-                        <MenuHeading icon={<BiLeftArrowAlt />} text={'Thread'} />
-                    </Link>
-                    <ThreadDetail id={parsedId} />
-                </MainBar>
-            </GridItem>
-            <GridItem colSpan={7}>
-                <SideBar>
-                    <ProfileCard top />
-                    <SuggestionCard />
-                    <DeveloperCard />
-                </SideBar>
-            </GridItem>
-        </Grid>
-    )
+    const [thread, onReply] = useReply(targetId)
+
+    if(thread){
+
+        return (
+            <Grid templateColumns={'repeat(19, 1fr)'}>
+                <GridItem colSpan={12}>
+                    <MainBar>
+                        <Link to={'/'}>
+                            <MenuHeading icon={<BiLeftArrowAlt />} text={'Thread'} />
+                        </Link>
+                        <ThreadDetail thread={thread} Reply={onReply} />
+                    </MainBar>
+                </GridItem>
+                <GridItem colSpan={7}>
+                    <SideBar>
+                        <ProfileCard/>
+                        <SuggestionCard />
+                        <DeveloperCard />
+                    </SideBar>
+                </GridItem>
+            </Grid>
+        )
+    }
 }
 
 export default DetailPage

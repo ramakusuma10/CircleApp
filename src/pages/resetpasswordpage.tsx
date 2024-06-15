@@ -3,8 +3,8 @@ import { Container, Flex, Text, Image} from '@chakra-ui/react'
 import { fontSizing } from '../styles/style'
 import { ResetType } from '../types/types'
 import { useEffect } from 'react'
-import ResetForm from '../features/ResetPassword'
-import API from '../libs/api'
+import ResetForm from '../features/auth/ResetPassword'
+import api from '../libs/api'
 
 function ResetPassword() {
     const navigate = useNavigate()
@@ -18,7 +18,7 @@ function ResetPassword() {
 
         async function onReset(data: ResetType): Promise<void> {
             try {
-                await API.RESET_PASSWORD(data, token)
+                await api.ResetPassword(data, token)
                 navigate('/resetpasssword')
             } catch (error) {
                 alert(error)

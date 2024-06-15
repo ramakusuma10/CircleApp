@@ -14,24 +14,34 @@ import MenuHeading from '../component/navigations/Menuheading'
 import ThreadList from '../component/threads/ThreadsList'
 import Tabs from '../component/utils/Tabs'
 import SetMedia from '../component/utils/setMedia'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
 
 
 function ProfilePage() {
+    const loggedUser = useSelector((states: RootState) => states.loggedUser.value)
+
+    if (loggedUser) {
+        const { username, fullname, bio, avatar, totalFollower, totalFollowing, threads } = loggedUser
+
     return (
         <Grid templateColumns={'repeat(19, 1fr)'}>
             <GridItem colSpan={12}>
                 <MainBar>
                     <Link to={'/'}>
-                        <MenuHeading icon={<BiLeftArrowAlt />} text={'Gianni Infantino'} />
+                        <MenuHeading icon={<BiLeftArrowAlt />} text={fullname} gummy />
                     </Link>
-                    <Card bg={'circle.backdrop'} px={'10px'} color={'circle.font'} mb={'12px'}>
-                    <ProfileCardHeader buttonText={'Edit Profile'} />
-                        <ProfileCardBody py={'1rem'} />
-                        <ProfileCardFooter />
+                    <Card bg={'circle.backdrop'} px={'15px'} color={'circle.font'} mb={'23px'}>
+                    <ProfileCardHeader buttonText={'Edit Profile'}  avatar={avatar}/>
+                        <ProfileCardBody username={username} fullname={fullname} bio={bio} py={'15rem'} />
+                        <ProfileCardFooter 
+                            totalFollower={totalFollower}
+                            totalFollowing={totalFollowing}
+                        />
                     </Card>
                     <Tabs
                         leftTitle={'Threads'}
-                        leftContent={<ThreadList />}
+                        leftContent={<ThreadList threads={threads} />}
                         rightTitle={'Media'}
                         rightContent={<SetMedia />}
                     />
@@ -39,12 +49,12 @@ function ProfilePage() {
             </GridItem>
             <GridItem colSpan={7}>
                 <SideBar>
-                    <SuggestionCard top />
+                    <SuggestionCard  />
                     <DeveloperCard />
                 </SideBar>
             </GridItem>
         </Grid>
     )
 }
-
+}
 export default ProfilePage

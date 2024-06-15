@@ -5,8 +5,8 @@ import { useAppDispatch } from '../hooks/hooks'
 import { setLoggedUser } from '../redux/auth/authSlice'
 import { LoginType,UserType } from '../types/types'
 
-import LoginForm from '../features/Login'
-import API from '../libs/api'
+import LoginForm from '../features/auth/Login'
+import api from '../libs/api'
 
 function LoginPage() {
     const dispatch = useAppDispatch()
@@ -15,9 +15,9 @@ function LoginPage() {
 
     async function onLogin(data: LoginType): Promise<void> {
         try {
-            const token: string = await API.LOGIN(data)
+            const token: string = await api.Login(data)
             if(token){
-            const loggedUser: UserType = await API.FIND_LOGGED_USER()
+            const loggedUser: UserType = await api.GetLoggedUser()
 
             dispatch(setLoggedUser(loggedUser))
             toast({

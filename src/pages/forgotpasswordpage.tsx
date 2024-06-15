@@ -8,15 +8,15 @@ import {
 } from '@chakra-ui/react'
 import { fontSizing } from '../styles/style'
 import { ForgotType } from '../types/types'
-import ForgotForm from '../features/ForgotPassword'
-import API from '../libs/api'
+import ForgotForm from '../features/auth/ForgotPassword'
+import api from '../libs/api'
 
 
 function ForgotPasswordPage() {
     const navigate = useNavigate()
         async function onForgot(data: ForgotType): Promise<void> {
             try {
-                const token = await API.FORGOT_PASSWORD(data)
+                const token = await api.ForgotPassword(data)
                 navigate('/resetpasssword',{
                     state: token,
                 })
