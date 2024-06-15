@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom'
 import BrandModal from '../assets/BrandModal'
 import GhostButton from '../button/ghostButton'
 import ThreadDetail from '../threads/ThreadDetail'
+import { useReply } from '../../hooks/useReply'
 
 interface ImageModalProps {
     onClose: () => void
@@ -15,11 +16,13 @@ interface ImageModalProps {
 }
 
 function ImageModal({ isOpen, onClose, ThreadPhoto }: ImageModalProps) {
-    const [hideThread, setHideVide] = useState<boolean>(true)
+    const [hideThread, setHideThread] = useState<boolean>(true)
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const ThreadId = searchParams.get('ThreadId')
-    const parsedThreadId = ThreadId ? parseInt(ThreadId, 10) : NaN
+    const id: string | null = searchParams.get('threadId')
+    const threadId: number = id ? +id : NaN
+
+    const [thread, onReply] = useReply(threadId)
 
     function onCloseModal(): void {
         setSearchParams({})
@@ -28,61 +31,63 @@ function ImageModal({ isOpen, onClose, ThreadPhoto }: ImageModalProps) {
     }
 
     function onHideThread(): void {
-        setHideVide((oldState) => !oldState)
+        setHideThread((oldState) => !oldState)
     }
 
-    return (
-        <BrandModal isOpen={isOpen} onClose={onClose} size={'full'}>
-            <Flex height={'100vh'}>
-                <Flex
-                    pos={'relative'}
-                    padding={'1rem'}
-                    justifyContent={'center'}
-                    alignItems={'center'}
-                    flex={2}
-                >
-                    <Image
-                        src={ThreadPhoto ? ThreadPhoto : undefined}
-                        width={'auto'}
-                        height={'auto'}
-                        maxWidth={'100%'}
-                        maxHeight={'100%'}
-                        objectFit={'cover'}
-                    />
+    if (thread) {
+        return (
+            <BrandModal isOpen={isOpen} onClose={onClose} size={'full'}>
+                <Flex height={'100vh'}>
                     <Flex
-                        pos={'absolute'}
-                        left={0}
-                        top={0}
+                        pos={'relative'}
                         padding={'1rem'}
-                        width={'100%'}
-                        justifyContent={'space-between'}
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                        flex={2}
                     >
-                        <GhostButton onClick={onCloseModal}>
-                            <Box color={'circle.font'} fontSize={fontSizing.bigger}>
-                                <BiExitFullscreen />
-                            </Box>
-                        </GhostButton>
-                        <GhostButton onClick={onHideThread}>
-                            <Box color={'circle.font'} fontSize={fontSizing.bigger}>
-                                {hideThread ? <BiSolidArrowFromLeft /> : <BiSolidArrowFromRight />}
-                            </Box>
-                        </GhostButton>
+                        <Image
+                            src={ThreadPhoto ? ThreadPhoto : undefined}
+                            width={'auto'}
+                            height={'auto'}
+                            maxWidth={'100%'}
+                            maxHeight={'100%'}
+                            objectFit={'cover'}
+                        />
+                        <Flex
+                            pos={'absolute'}
+                            left={0}
+                            top={0}
+                            padding={'1rem'}
+                            width={'100%'}
+                            justifyContent={'space-between'}
+                        >
+                            <GhostButton onClick={onCloseModal}>
+                                <Box color={'circle.font'} fontSize={fontSizing.bigger}>
+                                    <BiExitFullscreen />
+                                </Box>
+                            </GhostButton>
+                            <GhostButton onClick={onHideThread}>
+                                <Box color={'circle.font'} fontSize={fontSizing.bigger}>
+                                    {hideThread ? <BiSolidArrowFromLeft /> : <BiSolidArrowFromRight />}
+                                </Box>
+                            </GhostButton>
+                        </Flex>
                     </Flex>
+                    {hideThread && (
+                        <Box
+                            py={'1rem'}
+                            border={'1px'}
+                            borderColor={'circle.darker'}
+                            overflow={'scroll'}
+                            flex={1}
+                        >
+                            <ThreadDetail thread={thread} Reply={onReply} noImage />
+                        </Box>
+                    )}
                 </Flex>
-                {hideThread && (
-                    <Box
-                        py={'1rem'}
-                        border={'1px'}
-                        borderColor={'circle.darker'}
-                        overflow={'scroll'}
-                        flex={1}
-                    >
-                        <ThreadDetail id={parsedThreadId} withoutPhoto />
-                    </Box>
-                )}
-            </Flex>
-        </BrandModal>
-    )
+            </BrandModal>
+        )
+    }
 }
 
 export default ImageModal
