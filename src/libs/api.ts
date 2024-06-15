@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from 'axios'
 import CONFIG from '../config/config'
-import { LoginType, RegisterType, UserType, DetailThreadType, ThreadType, ForgotType, ResetType, EditUserType, ReplyType } from '../types/types'
+import { LoginType, RegisterType, UserType, DetailThreadType, ThreadType, ForgotType, ResetType, EditUserType, ReplyType, FollowType, LikeType } from '../types/types'
 
 class api {
-    async REGISTER(data: RegisterType): Promise<AxiosResponse> {
+    async Register(data: RegisterType): Promise<AxiosResponse> {
         return await axios.post(`${CONFIG.BASE_URL}/register`, {
             username: data.username,
             name: data.fullname,
@@ -12,7 +12,7 @@ class api {
         })
     }
 
-    async LOGIN(data: LoginType): Promise<string> {
+    async Login(data: LoginType): Promise<string> {
         const response: AxiosResponse = await axios.post(`${CONFIG.BASE_URL}/login`, {
             username: data.username,
             password: data.password,
@@ -42,7 +42,7 @@ class api {
         }
     }
 
-    async FORGOT_PASSWORD(data: ForgotType): Promise<string> {
+    async ForgotPassword(data: ForgotType): Promise<string> {
         try {
             const response: AxiosResponse = await axios.post(`${CONFIG.BASE_URL}/auth/forgot`, {
                 email: data.email,
@@ -58,7 +58,7 @@ class api {
         }
     }
 
-    async RESET_PASSWORD(data: ResetType, token: string): Promise<AxiosResponse> {
+    async ResetPassword(data: ResetType, token: string): Promise<AxiosResponse> {
         try {
             return await axios.patch(
                 `${CONFIG.BASE_URL}/auth/reset`,
@@ -98,23 +98,7 @@ class api {
         }
     }
 
-    async GET_DETAILED_THREAD(id: number): Promise<DetailThreadType> {
-        try {
-            const response = await axios.get(`${CONFIG.BASE_URL}/vibes/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${this.GET_TOKEN()}`,
-                },
-            })
-
-            return response.data.data
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                throw error
-            }
-
-            throw error
-        }
-    }
+    
 
     async CreateThread(data: FormData): Promise<string> {
         try {
@@ -134,7 +118,7 @@ class api {
         }
     }
 
-    async GET_ALL_USERS(): Promise<UserType[]> {
+    async FindAllUser(): Promise<UserType[]> {
         try {
             const response = await axios.get(`${CONFIG.BASE_URL}/users`, {
                 headers: {
@@ -227,6 +211,84 @@ class api {
             throw error
         }
     }
+
+    follow = async (userId: number): Promise<FollowType> => {
+        try {
+            const response = await axios.get(`${CONFIG.BASE_URL}/follow/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${this.GET_TOKEN()}`,
+                },
+            })
+
+            return response.data.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw error
+            }
+
+            throw error
+        }
+    }
+
+    unfollow = async (userId: number): Promise<FollowType> => {
+        try {
+            const response = await axios.get(`${CONFIG.BASE_URL}/unfollow/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${this.GET_TOKEN()}`,
+                },
+            })
+
+            return response.data.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw error
+            }
+
+            throw error
+        }
+    }
+    like = async (threadId: number): Promise<LikeType> => {
+        try {
+            const response: AxiosResponse = await axios.post(
+                `${CONFIG.BASE_URL}/likes`,
+                {
+                    threadId: threadId,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${this.GET_TOKEN()}`,
+                    },
+                }
+            )
+
+            return response.data.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw error
+            }
+
+            throw error
+        }
+    }
+
+    GetUsers = async (keyword: string): Promise<UserType[]> => {
+        try {
+            const response = await axios.get(`${CONFIG.BASE_URL}/find?keyword=${keyword}`, {
+                headers: {
+                    Authorization: `Bearer ${this.GET_TOKEN()}`,
+                },
+            })
+
+            return response.data.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw error
+            }
+
+            throw error
+        }
+    }
+
 
     SET_TOKEN(payload: string): void {
         localStorage.setItem('token', payload)
