@@ -8,7 +8,7 @@ import { ThreadSchema } from '../../validator/validator'
 
 import SolidButton from '../button/solidButton'
 import ImagePreview from '../utils/ImagePreview'
-import ThreadInput from '../../features/Thread'
+import ThreadInput from '../../features/threads/Thread'
 import { RootState } from '../../redux/store'
 import { useSelector } from 'react-redux'
 
