@@ -12,13 +12,13 @@ interface ImagePreviewProps {
 function ImagePreview({ imagePreview, onClose }: ImagePreviewProps) {
     if (imagePreview) {
         return (
-            <Box mx={'1rem'} pos={'relative'}>
+            <Box mx={'15px'} pos={'relative'}>
                 <Image src={imagePreview} />
                 <Box
                     pos={'absolute'}
                     top={0}
                     right={0}
-                    margin={'.5rem'}
+                    margin={'8px'}
                     borderRadius={'full'}
                     bg={'circle.backdrop'}
                 >
