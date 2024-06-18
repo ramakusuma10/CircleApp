@@ -4,7 +4,7 @@ function SetMedia() {
     const dummies = []
     const dummy = (
         <Image
-            src={'https://picsum.photos/500/750?grayscale'}
+            src={'https://cdn.idntimes.com/content-images/community/2020/06/tanjiro1-ed6519a91156c68fcf14ac252e4bba71_600x400.jpg'}
             height={'100%'}
             width={'100%'}
             objectFit={'cover'}

@@ -3,11 +3,12 @@ import { Heading } from '@chakra-ui/react'
 
 interface TradeHeadingProps {
     text: string
+    mb?: string | number
 }
 
-function TradeHeading({ text }: TradeHeadingProps) {
+function TradeHeading({ text, mb = '15px'}: TradeHeadingProps) {
     return (
-        <Heading fontWeight={'700'} fontSize={fontSizing.big} mb={'15px'}>
+        <Heading fontWeight={'700'} fontSize={fontSizing.big} mb={mb}>
             {text}
         </Heading>
     )
