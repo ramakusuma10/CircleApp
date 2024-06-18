@@ -25,7 +25,7 @@ function AccountCard({id, username, fullname, bio, avatar, NoBio, followed}: Acc
     const dispatch = useDispatch()
     
     async function dispatchLatestUserData() {
-        const loggedUser: UserType = await api.GetLoggedUser  ()
+        const loggedUser: UserType = await api.GetLoggedUser()
         dispatch(setLoggedUser(loggedUser))
     }
 
