@@ -29,14 +29,14 @@ function FollowsPage() {
             if (loggedUser) {
                 setFollowers(() => {
                     return users.filter((user) => {
-                        return loggedUser.followers.some((follower) => follower.userId === user.id)
+                        return loggedUser.followers.some((follower) => follower.followerId === user.id)
                     })
                 })
 
                 setFollowings(() => {
                     return users.filter((user) => {
                         return loggedUser.followings.some(
-                            (following) => following.targetId === user.id
+                            (following) => following.followedId === user.id
                         )
                     })
                 })

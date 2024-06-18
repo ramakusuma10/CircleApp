@@ -33,7 +33,7 @@ function ProfilePage() {
                     </Link>
                     <Card bg={'circle.backdrop'} px={'15px'} color={'circle.font'} mb={'23px'}>
                     <ProfileCardHeader buttonText={'Edit Profile'}  avatar={avatar}/>
-                        <ProfileCardBody username={username} fullname={fullname} bio={bio} py={'15rem'} />
+                        <ProfileCardBody username={username} fullname={fullname} bio={bio} py={'15px'} />
                         <ProfileCardFooter 
                             totalFollower={totalFollower}
                             totalFollowing={totalFollowing}

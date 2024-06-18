@@ -39,7 +39,7 @@ function RegisterPage() {
         }
     return (
         <Container height={'100vh'} width={'400px'}>
-            <Flex direction={'column'} gap={'15px'} justifyContent={'center'} height={'50%'}>
+            <Flex direction={'column'} gap={'15px'} justifyContent={'center'} height={'100%'}>
                 <Image src={'/circle.png'} width={'35%'} />
                 <Text fontSize={fontSizing.bigger} fontWeight={'600'} mt={'-12px'}>
                     Create new account
