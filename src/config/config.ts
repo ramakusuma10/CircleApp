@@ -1,5 +1,6 @@
+
 const CONFIG = {
-    BASE_URL: 'http://localhost:5000/api/v1',
+    BASE_URL: import.meta.env.VITE_BACKEND_URL,
 }
 
 export default CONFIG
