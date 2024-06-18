@@ -4,16 +4,16 @@ import { LoginType, RegisterType, UserType, DetailThreadType, ThreadType, Forgot
 
 class api {
     async Register(data: RegisterType): Promise<AxiosResponse> {
-        return await axios.post(`${CONFIG.BASE_URL}/register`, {
+        return await axios.post(`${CONFIG.BASE_URL}/auth/register`, {
             username: data.username,
-            name: data.fullname,
+            fullname: data.fullname,
             email: data.email,
             password: data.password,
         })
     }
 
     async Login(data: LoginType): Promise<string> {
-        const response: AxiosResponse = await axios.post(`${CONFIG.BASE_URL}/login`, {
+        const response: AxiosResponse = await axios.post(`${CONFIG.BASE_URL}/auth/login`, {
             username: data.username,
             password: data.password,
         })
@@ -80,7 +80,7 @@ class api {
         }
     }
 
-    async getThread(): Promise<ThreadType[]> {
+    getThread = async (): Promise<ThreadType[]> => {
         try {
             const response = await axios.get(`${CONFIG.BASE_URL}/threads`, {
                 headers: {
@@ -157,7 +157,7 @@ class api {
     async UpdateUser(data: FormData): Promise<EditUserType> {
         try {
             const response: AxiosResponse = await axios.patch(
-                `${CONFIG.BASE_URL}/users/me`,
+                `${CONFIG.BASE_URL}/users/profile`,
                 data,
                 {
                     headers: {
@@ -212,9 +212,9 @@ class api {
         }
     }
 
-    follow = async (userId: number): Promise<FollowType> => {
+    follow = async (followedId: number): Promise<FollowType> => {
         try {
-            const response = await axios.get(`${CONFIG.BASE_URL}/follow/${userId}`, {
+            const response = await axios.get(`${CONFIG.BASE_URL}/follow/${followedId}`, {
                 headers: {
                     Authorization: `Bearer ${this.GET_TOKEN()}`,
                 },
@@ -230,9 +230,9 @@ class api {
         }
     }
 
-    unfollow = async (userId: number): Promise<FollowType> => {
+    unfollow = async (followedId: number): Promise<FollowType> => {
         try {
-            const response = await axios.get(`${CONFIG.BASE_URL}/unfollow/${userId}`, {
+            const response = await axios.get(`${CONFIG.BASE_URL}/unfollow/${followedId}`, {
                 headers: {
                     Authorization: `Bearer ${this.GET_TOKEN()}`,
                 },
@@ -273,7 +273,7 @@ class api {
 
     GetUsers = async (keyword: string): Promise<UserType[]> => {
         try {
-            const response = await axios.get(`${CONFIG.BASE_URL}/find?keyword=${keyword}`, {
+            const response = await axios.get(`${CONFIG.BASE_URL}/search?keyword=${keyword}`, {
                 headers: {
                     Authorization: `Bearer ${this.GET_TOKEN()}`,
                 },
