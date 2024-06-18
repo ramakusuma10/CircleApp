@@ -1,4 +1,4 @@
-import { Flex, Spacer, Image } from '@chakra-ui/react'
+import { Box, Flex, Spacer, Image, useDisclosure } from '@chakra-ui/react'
 import { BiSolidHome, BiSearchAlt, BiHeart, BiUser, BiLogOut } from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -7,24 +7,25 @@ import API from '../../libs/api'
 
 import MenuItem from './MenuItem'
 import SolidButton from '../button/solidButton'
+import BrandModal from '../assets/BrandModal'
+import NewThread from '../threads/Newthreads'
+import { useThread } from '../../hooks/useThread'
 
-interface MenuProps {
-    onOpen: () => void
-}
 
-function Menu({onOpen}: MenuProps) {
+function Menu() {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [, onPost] = useThread({ onClose })
+
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     async function onLogout() {
-        try {
+
             API.SET_TOKEN('')
             dispatch(unsetLoggedUser())
 
             navigate('/login')
-        } catch (error) {
-            alert(error)
-        }
     }
 
     return (
@@ -48,14 +49,22 @@ function Menu({onOpen}: MenuProps) {
             <Link to={'/follows'}>
                 <MenuItem icon={<BiHeart />} text={'Follows'} />
             </Link>
-            <Link to={'/me'}>
+            <Link to={'/profile'}>
                 <MenuItem icon={<BiUser />} text={'Profile'} />
             </Link>
             <SolidButton onClick={onOpen} text={'Create Post'} py={'22px'} />
             <Spacer />
-            <Link to={'/login'}>
-                <MenuItem icon={<BiLogOut />} text={'Logout'} onLogout={onLogout}/>
-            </Link>
+
+            <MenuItem icon={<BiLogOut />} text={'Logout'} onLogout={onLogout} />
+            <BrandModal isOpen={isOpen} onClose={onClose} size={'xl'}>
+                <Box pt={'8px'}>
+                    <NewThread
+                        placeholder={"What's on your mind?"}
+                        imagePreviewId={'atModal'}
+                        onPost={onPost}
+                    />
+                </Box>
+            </BrandModal>
         </Flex>
     )
 }
