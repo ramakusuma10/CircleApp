@@ -82,8 +82,8 @@ export interface DetailThreadType {
 
 export interface FollowType {
     id: number
-    targetId: number
-    userId: number
+    followerId: number
+    followedId: number
 }
 
 export interface LikeType {
