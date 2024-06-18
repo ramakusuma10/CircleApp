@@ -8,17 +8,19 @@ interface ThreadListProps {
     threads: ThreadType[]
 }
 function ThreadList({ threads }: ThreadListProps) {
-    return (
-        <Box>
-            {threads.map((thread) => {
-                return (
-                    <Link to={`/detail/${thread.id}`} key={thread.id}>
-                        <ThreadItem thread={thread} />
-                    </Link>
-                )
-            })}
-        </Box>
-    )
+    if (threads.length){
+        return (
+            <Box>
+                {threads.map((thread) => {
+                    return (
+                        <Link to={`/detail/${thread.id}`} key={thread.id}>
+                            <ThreadItem thread={thread} />
+                        </Link>
+                    )
+                })}
+            </Box>
+        )
+    }
 }
 
 export default ThreadList
