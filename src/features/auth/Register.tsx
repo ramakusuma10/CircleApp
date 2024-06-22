@@ -31,7 +31,7 @@ function RegisterInput(props: RegisterInputProps) {
             <p>{errors.username?.message}</p>
             <Input
                 type={'text'}
-                placeholder="fullname"
+                placeholder="Fullname"
                 variant={'hollow'}
                 {...register('fullname')}
             />
@@ -45,7 +45,7 @@ function RegisterInput(props: RegisterInputProps) {
             <p>{errors.email?.message}</p>
             <Input
                 type={'password'}
-                placeholder="Passoword"
+                placeholder="Password"
                 variant={'hollow'}
                 {...register('password')}
             />

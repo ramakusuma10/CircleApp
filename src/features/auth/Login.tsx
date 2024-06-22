@@ -36,9 +36,9 @@ function LoginInput(props: LoginInputProps) {
             />
             <p>{errors.password?.message}</p>
 
-            <Box mt={'.5rem'}>
+            <Box mt={'8px'}>
                 <SolidButton
-                    text={'Create'}
+                    text={'Login'}
                     onClick={handleSubmit((data) => {
                         props.onLogin(data)
                     })}
