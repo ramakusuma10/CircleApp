@@ -48,7 +48,7 @@ function App() {
         return (
         <div className="app">
         <Routes>
-             <Route path="/login" element={<LoginPage />} />
+             <Route path="/*" element={<LoginPage />} />
              <Route path="/register" element={<RegisterPage />} />
              <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
              <Route path="/resetpassword" element={<ResetPasswordPage />} />
