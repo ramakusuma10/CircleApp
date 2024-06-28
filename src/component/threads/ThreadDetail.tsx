@@ -1,5 +1,5 @@
 import { DetailThreadType, ThreadDataType, UserType } from '../../types/types'
-import { Box} from '@chakra-ui/react'
+import { Box, Text} from '@chakra-ui/react'
 
 import ThreadList from '../threads/ThreadsList'
 import ThreadItem from '../threads/ThreadsItem'
@@ -37,7 +37,7 @@ function ThreadDetail({ thread,noImage,Reply }: ThreadDetailProps) {
     if (!replies.length)
         return (
             <Box>
-                <ThreadItem thread={rest} noImage={noImage && noImage} noHover/>
+                <ThreadItem thread={rest} noImage={noImage && noImage} repliesThread/>
                 <NewThread placeholder={'Post your reply'} onPost={Reply}
                     imagePreviewId={'atDetail'}
                     buttonText={'Reply'} />
@@ -46,9 +46,15 @@ function ThreadDetail({ thread,noImage,Reply }: ThreadDetailProps) {
 
     return (
         <Box>
-            <ThreadItem thread={rest} noImage={noImage && noImage} noHover />
+            <ThreadItem thread={rest} noImage={noImage && noImage} isReply />
             <NewThread placeholder={'Post your reply'} onPost={Reply} imagePreviewId={'atDetail'}buttonText={'Reply'}/>
-            <ThreadList threads={repliesUser} />
+            {users.length ? (
+                <ThreadList threads={repliesUser} />
+            ):(
+                <Text>
+                    Loading
+                </Text>
+            )}
         </Box>
     )
 

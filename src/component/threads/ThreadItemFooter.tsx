@@ -1,12 +1,11 @@
 import { CardFooter, Flex, Spacer } from '@chakra-ui/react'
-import { BiSolidHeart, BiCommentDetail, BiDotsVerticalRounded } from 'react-icons/bi'
+import { BiSolidHeart, BiCommentDetail } from 'react-icons/bi'
 
 import ThreadItemButton from '../threads/ThreadsItemButton'
 import { UserType } from '../../types/types'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
 import { useState } from 'react'
 import api from '../../libs/api'
+import { useNavigate } from 'react-router-dom'
 
 interface ThreadItemFooterProps {
     threadId: number
@@ -14,13 +13,15 @@ interface ThreadItemFooterProps {
     totalReply: number
     isLiked: boolean
     user: UserType
+    isReply?: boolean
+    repliesThread?: boolean
 }
 
-function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked, user }: ThreadItemFooterProps) {
-    const loggedUser = useSelector((states: RootState) => states.loggedUser.value)
+function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked }: ThreadItemFooterProps) {
     const [isThreadLiked, setThreadLiked] = useState<boolean>(isLiked)
     const [totalThreadLike, setTotalThreadLike] = useState<number>(totalLike)
 
+    const navigate = useNavigate()
     
     async function onLike() {
         try {
@@ -55,16 +56,11 @@ function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked, user }: Th
                         value={totalReply}
                         color={'circle.dark'}
                         hoverColor={'circle.green'}
+                        onClick={() => navigate(`/thread/${threadId}`)}
                     />
                 </Flex>
             )}
             <Spacer />
-            {loggedUser && loggedUser.id === user.id && (
-                <ThreadItemButton
-                    icon={<BiDotsVerticalRounded />}
-                    color={'circle.dark'}
-                    hoverColor={'circle.green'}                />
-            )}
         </CardFooter>
     )
 }
