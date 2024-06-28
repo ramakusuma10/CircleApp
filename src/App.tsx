@@ -11,6 +11,7 @@ import LoginPage from './pages/loginpage'
 import RegisterPage from './pages/registerpage'
 import ForgotPasswordPage from './pages/forgotpasswordpage'
 import ResetPasswordPage from './pages/resetpasswordpage'
+import UserPage from './pages/userpage'
 import FollowsPage from './pages/followspage'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserType } from './types/types'
@@ -63,7 +64,8 @@ function App() {
             <Route path="/" element={<NavLayout />}>
                 <Route index element={<HomePage />} />
                 <Route path="/detail/:id" element={<DetailPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile/:id" element={<ProfilePage />} />
+                <Route path="/user/:id" element={<UserPage />} />
                 <Route path="/follows" element={<FollowsPage />} />
                 <Route path="/search" element={<SearchPage />} />  
             </Route>
