@@ -6,10 +6,11 @@ interface GlassButtonProps {
     children: ReactNode
     color?: string
     fontSize?: string
+    onTop?: boolean
     onClick?: () => void
 }
 
-function GhostButton({ children, color, fontSize, onClick }: GlassButtonProps) {
+function GhostButton({ children, color, fontSize, onClick, onTop }: GlassButtonProps) {
     function onClickHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
         if (onClick) {
             e.stopPropagation()
@@ -26,7 +27,7 @@ function GhostButton({ children, color, fontSize, onClick }: GlassButtonProps) {
             width={'auto'}
             variant={'ghost'}
             display={'flex'}
-            alignItems={'center'}
+            alignItems={onTop ? 'start' : 'center'}
             justifyContent={'start'}
             minWidth={'none'}
             minHeight={'none'}
