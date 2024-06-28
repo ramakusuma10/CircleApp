@@ -20,7 +20,7 @@ function useEditUser(params: useEditProfileParams = {}): [(data: EditUserDataTyp
     formData.append('name', data.fullname)
     formData.append('username', data.username)
     formData.append('bio', data.bio)
-    formData.append('avatar', data.avatar[0])
+    formData.append('avatar', data.avatar ? data.avatar[0] : null)
     
     mutation.mutate(formData)
     
