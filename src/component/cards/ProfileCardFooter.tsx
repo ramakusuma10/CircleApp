@@ -12,13 +12,13 @@ function ProfileCardFooter({ totalFollower, totalFollowing }: ProfileCardFooterP
         <CardFooter display={'flex'} gap={'15px'} padding={0}>
             <GhostButton>
                 <Text color={'circle.font'}>{totalFollowing}</Text>
-                <Text color={'circle.dark'} ml={'2.5px'}>
+                <Text color={'circle.dark'} ml={'4px'}>
                     Following
                 </Text>
             </GhostButton>
             <GhostButton>
                 <Text color={'circle.font'}>{totalFollower}</Text>
-                <Text color={'circle.dark'} ml={'2.5px'}>
+                <Text color={'circle.dark'} ml={'4px'}>
                     Followers
                 </Text>
             </GhostButton>

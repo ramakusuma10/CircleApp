@@ -5,21 +5,24 @@ interface AccountListCardProps {
     users: UserType[]
 }
 function AccountListCard({users}: AccountListCardProps) {
-    return (
-        <Flex direction={'column'} gap={'15px'} padding={'15px'}>
-            {users.map((user)=>(
-                <AccountCard 
-                    key={user.id}
-                    id={user.id}
-                    username={user.username}
-                    fullname={user.fullname}
-                    bio={user.bio}
-                    avatar={user.avatar}
-                    followed={user.isFollowed}
-                />
-            ))}
-        </Flex>
-    )
+    if(users.length){
+        return (
+            <Flex direction={'column'} gap={'15px'} padding={'15px'}>
+                {users.map((user)=>(
+                    <AccountCard 
+                        key={user.id}
+                        id={user.id}
+                        username={user.username}
+                        fullname={user.fullname}
+                        bio={user.bio}
+                        avatar={user.avatar}
+                        followed={user.isFollowed}
+                    />
+                ))}
+            </Flex>
+            )
+
+    }
 }
 
 export default AccountListCard

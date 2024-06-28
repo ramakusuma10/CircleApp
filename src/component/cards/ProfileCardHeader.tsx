@@ -12,14 +12,15 @@ interface ProfileCardHeaderProps<T extends FieldValues>{
     buttonText?: string
     editable?: boolean
     avatar: string
-    fullname?: Path<T>
+    isUserProfile?: boolean
+    avatarName?: Path<T>
     register?: UseFormRegister<T>
 }
 
 
 function ProfileCardHeader<T extends FieldValues>(props:ProfileCardHeaderProps<T>){
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { buttonText, editable, avatar, register, fullname } = props
+    const { buttonText, editable, avatar, register, isUserProfile, avatarName } = props
 
     const [avatarPreview, setAvatarPreview] = useState<string>('')
 
@@ -47,6 +48,7 @@ function ProfileCardHeader<T extends FieldValues>(props:ProfileCardHeaderProps<T
                     borderRadius={'xl'}
                     mb={editable ? '45px' : 0}
                 />
+                 {isUserProfile && <Box boxSize={'40px'}/>}
                  {!editable && (
                 <Box ml={'auto'} zIndex={1}>
                     <HollowButton onClick={onOpen} text={buttonText} />
@@ -61,7 +63,7 @@ function ProfileCardHeader<T extends FieldValues>(props:ProfileCardHeaderProps<T
                     borderColor={'circle.darker'}
                 />
                 </Flex>
-                {editable && fullname && register &&(
+                {editable && avatarName && register &&(
                 <Flex
                     boxSize={'150px'}
                     justifyContent={'center'}
@@ -78,7 +80,7 @@ function ProfileCardHeader<T extends FieldValues>(props:ProfileCardHeaderProps<T
                         border={0}
                         id="atAvatar"
                         variant={'hollow'}
-                        {...register(fullname)}
+                        {...register(avatarName)}
                         onChange={(e) => onAvatarChange(e)}
                     />
                     <Box

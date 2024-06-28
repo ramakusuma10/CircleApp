@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import api from '../../libs/api'
 import { setLoggedUser } from '../../redux/auth/authSlice'
+import { Link } from 'react-router-dom'
 
 
 interface AccountCardProps {
@@ -47,14 +48,26 @@ function AccountCard({id, username, fullname, bio, avatar, NoBio, followed}: Acc
 
     return (
         <Flex gap={'15px'} alignItems={'center'}>
-            <Avatar src={avatar} />
+            <Link to={`/user/${id}`}>
+                <Avatar src={avatar} _hover={{ opacity: '.8', transition: 'opacity .3s ease' }} />
+            </Link>
             <Flex direction={'column'} justifyContent={'center'} gap={0} mr={'auto'}>
-                <Text fontSize={fontSizing.small} fontWeight={'700'}>
-                    {fullname}
-                </Text>
-                <Text fontSize={fontSizing.smaller} color={'circle.dark'}>
-                    {username}
-                </Text>
+            <Link to={`/user/${id}`}>
+                    <Text
+                        fontSize={fontSizing.small}
+                        fontWeight={'700'}
+                        _hover={{ opacity: '.8', transition: 'opacity .3s ease' }}
+                    >
+                        {fullname}
+                    </Text>
+                    <Text
+                        fontSize={fontSizing.smaller}
+                        color={'circle.dark'}
+                        _hover={{ opacity: '.8', transition: 'opacity .3s ease' }}
+                    >
+                        @{username}
+                    </Text>
+                </Link>
                 {bio && !NoBio && <Text fontSize={fontSizing.smaller}>{bio}</Text>}
             </Flex>
 

@@ -3,14 +3,13 @@ import { ReactNode } from 'react'
 
 interface BrandCardProps {
     children: ReactNode
-    top?: boolean
     noSpace?: boolean
     dark?: boolean
 }
 
-function BrandCard({ children, top, noSpace, dark }: BrandCardProps) {
+function BrandCard({ children, noSpace, dark }: BrandCardProps) {
     return (
-    <Box margin={0} p={0} pl={noSpace ? 0 : '30px'} mb={'15px'} mt={top ? '30px' : 0}>
+    <Box margin={0} p={0} pl={noSpace ? 0 : '30px'} mb={'15px'}>
         <Card
             color={'circle.font'}
             bg={dark ? 'circle.backdrop' : 'circle.darker'}
