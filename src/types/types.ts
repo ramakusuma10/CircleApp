@@ -7,7 +7,7 @@ export interface UserType {
     avatar: any
     bio: string | null
     followers: FollowType[]
-    followings: FollowType[]
+    followeds: FollowType[]
     totalFollower: number
     totalFollowing: number
     isFollowed: boolean
