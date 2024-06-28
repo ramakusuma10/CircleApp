@@ -289,6 +289,41 @@ class api {
         }
     }
 
+    DeleteThread = async (targetUd: number): Promise<ThreadType> => {
+        try {
+            const response = await axios.delete(`${CONFIG.BASE_URL}/thread/${targetUd}`, {
+                headers: {
+                    Authorization: `Bearer ${this.GET_TOKEN()}`,
+                },
+            })
+
+            return response.data.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw error
+            }
+
+            throw error
+        }
+    }
+
+    DeleteReply = async (targetUd: number): Promise<ReplyType> => {
+        try {
+            const response = await axios.delete(`${CONFIG.BASE_URL}/replies/${targetUd}`, {
+                headers: {
+                    Authorization: `Bearer ${this.GET_TOKEN()}`,
+                },
+            })
+
+            return response.data.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw error
+            }
+
+            throw error
+        }
+    }
 
     SET_TOKEN(payload: string): void {
         localStorage.setItem('token', payload)
