@@ -18,7 +18,7 @@ import api from '../libs/api'
 
 function FollowsPage() {
     const [followers, setFollowers] = useState<UserType[]>([])
-    const [followings, setFollowings] = useState<UserType[]>([])
+    const [followeds, setFolloweds] = useState<UserType[]>([])
 
     const loggedUser = useSelector((states: RootState) => states.loggedUser.value)
 
@@ -33,10 +33,10 @@ function FollowsPage() {
                     })
                 })
 
-                setFollowings(() => {
+                setFolloweds(() => {
                     return users.filter((user) => {
-                        return loggedUser.followings.some(
-                            (following) => following.followedId === user.id
+                        return loggedUser.followeds.some(
+                            (followed) => followed.followedId === user.id
                         )
                     })
                 })
@@ -57,7 +57,7 @@ function FollowsPage() {
                         leftTitle={'Followers'}
                         leftContent={<AccountListCard users={followers}/>}
                         rightTitle={'Following'}
-                        rightContent={<AccountListCard users={followings} />}
+                        rightContent={<AccountListCard users={followeds} />}
                     />
                 </MainBar>
             </GridItem>

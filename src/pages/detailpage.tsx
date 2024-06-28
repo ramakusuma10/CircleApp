@@ -1,6 +1,6 @@
 import { Link, Params, useParams } from 'react-router-dom'
 import { BiLeftArrowAlt } from 'react-icons/bi'
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Text,Grid, GridItem } from '@chakra-ui/react'
 
 
 import MainBar from '../component/bar/Mainbar'
@@ -14,20 +14,24 @@ import { useReply } from '../hooks/useReply'
 
 function DetailPage() {
     const { id }: Readonly<Params<string>> = useParams()
-    const targetId: number = id ? +id : NaN
+    const threadId: number = id ? +id : NaN
 
-    const [thread, onReply] = useReply(targetId)
+    const [thread, onReply] = useReply(threadId)
 
-    if(thread){
-
-        return (
+    return (
             <Grid templateColumns={'repeat(19, 1fr)'}>
                 <GridItem colSpan={12}>
                     <MainBar>
                         <Link to={'/'}>
                             <MenuHeading icon={<BiLeftArrowAlt />} text={'Thread'} />
                         </Link>
-                        <ThreadDetail thread={thread} Reply={onReply} />
+                        {thread?(
+                            <ThreadDetail thread={thread} Reply={onReply} />
+                        ):(
+                            <Text>
+                                Loading
+                            </Text>
+                        )}
                     </MainBar>
                 </GridItem>
                 <GridItem colSpan={7}>
@@ -38,8 +42,7 @@ function DetailPage() {
                     </SideBar>
                 </GridItem>
             </Grid>
-        )
-    }
+    )
 }
 
 export default DetailPage
