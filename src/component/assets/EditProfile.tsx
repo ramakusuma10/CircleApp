@@ -38,7 +38,7 @@ function EditProfile({avatar, onClose}: EditProfileProps) {
         <Box py={'30px'}>
             <Card bg={'circle.backdrop'} px={'15px'} color={'circle.font'} mb={'1.5rem'}>
                 <BrandHeading text={'Edit Profile'} />
-                <ProfileCardHeader avatar={avatar} fullname={'avatar'} register={register} editable />
+                <ProfileCardHeader avatar={avatar} avatarName={'avatar'} register={register} editable />
             </Card>
             <Flex direction={'column'} gap={'8px'} px={'15px'} mb="15px">
                 
