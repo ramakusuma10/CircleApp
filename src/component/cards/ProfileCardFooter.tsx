@@ -4,14 +4,14 @@ import GhostButton from '../button/ghostButton'
 
 interface ProfileCardFooterProps {
     totalFollower: number
-    totalFollowing: number
+    totalFollowed: number
 }
 
-function ProfileCardFooter({ totalFollower, totalFollowing }: ProfileCardFooterProps) {
+function ProfileCardFooter({ totalFollower, totalFollowed }: ProfileCardFooterProps) {
     return (
         <CardFooter display={'flex'} gap={'15px'} padding={0}>
             <GhostButton>
-                <Text color={'circle.font'}>{totalFollowing}</Text>
+                <Text color={'circle.font'}>{totalFollowed}</Text>
                 <Text color={'circle.dark'} ml={'4px'}>
                     Following
                 </Text>

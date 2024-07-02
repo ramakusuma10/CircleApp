@@ -17,11 +17,11 @@ interface AccountCardProps {
     bio: string | null
     avatar: string
     NoBio?: boolean
-    followed: boolean
+    isFollowed: boolean
 }
 
-function AccountCard({id, username, fullname, bio, avatar, NoBio, followed}: AccountCardProps) {
-    const [isUserFollowed, setUserFollowed] = useState<boolean>(followed)
+function AccountCard({id, username, fullname, bio, avatar, NoBio, isFollowed}: AccountCardProps) {
+    const [isUserFollowed, setUserFollowed] = useState<boolean>(isFollowed)
     
     const dispatch = useDispatch()
     
@@ -32,7 +32,7 @@ function AccountCard({id, username, fullname, bio, avatar, NoBio, followed}: Acc
 
     async function Follow() {
         try {
-            if (!followed) {
+            if (!isFollowed) {
                 await api.follow(id)
                 return setUserFollowed(true)
             }
@@ -40,7 +40,7 @@ function AccountCard({id, username, fullname, bio, avatar, NoBio, followed}: Acc
             await api.unfollow(id)
             return setUserFollowed(false)
         } catch (error) {
-            setUserFollowed(followed)
+            setUserFollowed(isFollowed)
         } finally {
             dispatchLatestUserData()
         }
@@ -72,7 +72,7 @@ function AccountCard({id, username, fullname, bio, avatar, NoBio, followed}: Acc
             </Flex>
 
             {isUserFollowed ? (
-                <HollowButton text={'Unfollow'} onClick={Follow} dark />
+                <HollowButton text={'Following'} onClick={Follow} dark />
             ) : (
                 <HollowButton text={'Follow'} onClick={Follow} />
             )}

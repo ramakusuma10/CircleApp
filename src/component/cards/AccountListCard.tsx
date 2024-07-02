@@ -16,7 +16,7 @@ function AccountListCard({users}: AccountListCardProps) {
                         fullname={user.fullname}
                         bio={user.bio}
                         avatar={user.avatar}
-                        followed={user.isFollowed}
+                        isFollowed={user.isFollowed}
                     />
                 ))}
             </Flex>

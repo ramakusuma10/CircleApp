@@ -49,7 +49,7 @@ function ProfileCardHeader<T extends FieldValues>(props:ProfileCardHeaderProps<T
                     mb={editable ? '45px' : 0}
                 />
                  {isUserProfile && <Box boxSize={'40px'}/>}
-                 {!editable && (
+                 {!editable && !isUserProfile && (
                 <Box ml={'auto'} zIndex={1}>
                     <HollowButton onClick={onOpen} text={buttonText} />
                 </Box>

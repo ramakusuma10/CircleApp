@@ -21,7 +21,7 @@ function ProfileCard() {
         setHideProfile((oldState) => !oldState)
     }
     if (loggedUser) {
-        const { avatar, bio, username, fullname, totalFollower, totalFollowing } = loggedUser
+        const { avatar, bio, username, fullname, totalFollower, totalFollowed } = loggedUser
         return (
             <BrandCard>
                 <GhostButton onClick={onToggle}>
@@ -44,7 +44,7 @@ function ProfileCard() {
                     <ProfileCardBody username={username} fullname={fullname} bio={bio} />
                     <ProfileCardFooter
                         totalFollower={totalFollower}
-                        totalFollowing={totalFollowing}
+                        totalFollowed={totalFollowed}
                     />
                 </Collapse>
             </BrandCard>

@@ -46,7 +46,7 @@ function SuggestionCard() {
                             fullname={user.fullname}
                             bio={user.bio}
                             avatar={user.avatar}
-                            followed={user.isFollowed}
+                            isFollowed={user.isFollowed}
                             NoBio
                         />
                     ))}
