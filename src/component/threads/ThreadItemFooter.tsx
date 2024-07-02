@@ -25,16 +25,18 @@ function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked }: ThreadIt
     
     async function onLike() {
         try {
-            await api.like(threadId)
-
+            
             setThreadLiked((oldState) => !oldState)
             setTotalThreadLike((oldState) => {
                 if (!isThreadLiked) {
                     return oldState + 1
                 }
-
+                
                 return oldState - 1
             })
+
+            await api.like(threadId)
+
         } catch (error) {
             setThreadLiked(isLiked)
             setTotalThreadLike(totalLike)
@@ -42,7 +44,6 @@ function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked }: ThreadIt
     }
     return (
         <CardFooter padding={0}>
-            {totalReply !== undefined && totalLike !== undefined && (
                 <Flex gap={'15px'}>
                     <ThreadItemButton
                         onClick={onLike}
@@ -59,7 +60,6 @@ function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked }: ThreadIt
                         onClick={() => navigate(`/detail/${threadId}`)}
                     />
                 </Flex>
-            )}
             <Spacer />
         </CardFooter>
     )
