@@ -43,7 +43,7 @@ function useThread(params: useThreadParams = {}):[ThreadType[] | undefined,(data
     const deleteThread = useMutation({
       mutationFn: DeleteThread,
       onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: ['vibes'] })
+          queryClient.invalidateQueries({ queryKey: ['threads'] })
       },
     })
 
