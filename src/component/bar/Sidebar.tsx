@@ -6,7 +6,7 @@ interface SideBarProps {
 }
 
 function SideBar({ children }: SideBarProps): JSX.Element {
-    return <Box as="aside">{children}</Box>
+    return <Box as="aside" pos={'sticky'} top={0} py={'30px'}> {children}</Box>
 }
 
 export default SideBar
