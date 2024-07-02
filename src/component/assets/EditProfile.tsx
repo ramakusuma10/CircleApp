@@ -42,9 +42,9 @@ function EditProfile({avatar, onClose}: EditProfileProps) {
             </Card>
             <Flex direction={'column'} gap={'8px'} px={'15px'} mb="15px">
                 
-                <SolidInput type={'text'} placeholder={'Fullname'} name={'fullname'} register={register} error={errors.fullname}/>
-                <SolidInput type={'text'} placeholder={'Username'} name={'username'} register={register} error={errors.username}/>
-                <SolidInput
+                <SolidInput<EditUserDataType> type={'text'} placeholder={'Fullname'} name={'fullname'} register={register} error={errors.fullname}/>
+                <SolidInput<EditUserDataType> type={'text'} placeholder={'Username'} name={'username'} register={register} error={errors.username}/>
+                <SolidInput<EditUserDataType>
                     type={'text'}
                     placeholder={'Bio'}
                     name={'bio'}
