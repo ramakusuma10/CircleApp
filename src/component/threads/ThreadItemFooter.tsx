@@ -56,7 +56,7 @@ function ThreadItemFooter({ threadId, totalLike, totalReply, isLiked }: ThreadIt
                         value={totalReply}
                         color={'circle.dark'}
                         hoverColor={'circle.green'}
-                        onClick={() => navigate(`/thread/${threadId}`)}
+                        onClick={() => navigate(`/detail/${threadId}`)}
                     />
                 </Flex>
             )}

@@ -13,7 +13,7 @@ import { RootState } from '../../redux/store'
 import { useSelector } from 'react-redux'
 
 interface ThreadProps {
-    onPost(data: ThreadDataType): void
+    onPost : (data: ThreadDataType) => Promise<void> | void
     placeholder: string
     buttonText?: string
     imagePreviewId: string
@@ -75,7 +75,7 @@ function NewThread(props: ThreadProps) {
                     <Box width={'15%'}>
                         <SolidButton
                             text={buttonText ? buttonText : 'Post'}
-                            onClick={handleSubmit((data) => {props.onPost(data)
+                            onClick={handleSubmit(async(data) =>{ await props.onPost(data)
                                 resetField('content')
                                 resetField('image')
                                 setImagePreview('')

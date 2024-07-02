@@ -49,7 +49,7 @@ function ThreadDetail({ thread,noImage,Reply }: ThreadDetailProps) {
             <ThreadItem thread={rest} noImage={noImage && noImage} isReply />
             <NewThread placeholder={'Post your reply'} onPost={Reply} imagePreviewId={'atDetail'}buttonText={'Reply'}/>
             {users.length ? (
-                <ThreadList threads={repliesUser} />
+                <ThreadList threads={repliesUser} noURL/>
             ):(
                 <Text>
                     Loading
