@@ -9,19 +9,9 @@ export interface UserType {
     followers: FollowType[]
     followeds: FollowType[]
     totalFollower: number
-    totalFollowing: number
+    totalFollowed: number
     isFollowed: boolean
     threads: ThreadType[]
-}
-
-export interface DetailUserType {
-    id: number
-    username: string
-    fullname: string
-    email: string
-    avatar: string
-    bio: string | null
-    isFollowed: boolean
 }
 
 export interface LoginType {
@@ -66,18 +56,9 @@ export interface ThreadType {
     user: UserType | undefined
 }
 
-export interface DetailThreadType {
-    id: number
-    content: string
-    image: string | null
-    createdAt: string
-    userId: number
+export interface DetailThreadType extends ThreadType{
     replies: ThreadType[]
     likes: LikeType[]
-    totalreplies: number
-    totallikes: number
-    isLiked: boolean
-    user: UserType
 }
 
 export interface FollowType {
