@@ -64,8 +64,8 @@ function App() {
             <Route path="/" element={<NavLayout />}>
                 <Route index element={<HomePage />} />
                 <Route path="/detail/:id" element={<DetailPage />} />
-                <Route path="/profile/:id" element={<ProfilePage />} />
-                <Route path="/user/:id" element={<UserPage />} />
+                <Route path="/user/:id" element={<ProfilePage />} />
+                <Route path="/user" element={<UserPage />} />
                 <Route path="/follows" element={<FollowsPage />} />
                 <Route path="/search" element={<SearchPage />} />  
             </Route>
