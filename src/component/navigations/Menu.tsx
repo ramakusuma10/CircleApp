@@ -49,7 +49,7 @@ function Menu() {
             <Link to={'/follows'}>
                 <MenuItem icon={<BiHeart />} text={'Follows'} />
             </Link>
-            <Link to={'/profile'}>
+            <Link to={'/user'}>
                 <MenuItem icon={<BiUser />} text={'Profile'} />
             </Link>
             <SolidButton onClick={onOpen} text={'Create Post'} py={'22px'} />
