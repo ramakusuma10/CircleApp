@@ -20,7 +20,7 @@ function UserPage() {
     const loggedUser = useSelector((states: RootState) => states.loggedUser.value)
 
     if (loggedUser) {
-        const { username, fullname, bio, avatar, totalFollower, totalFollowing,threads } = loggedUser
+        const { username, fullname, bio, avatar, totalFollower, totalFollowed,threads } = loggedUser
 
     return (
         <Grid templateColumns={'repeat(19, 1fr)'}>
@@ -34,7 +34,7 @@ function UserPage() {
                         <ProfileCardBody username={username} fullname={fullname} bio={bio} py={'15px'} />
                         <ProfileCardFooter 
                             totalFollower={totalFollower}
-                            totalFollowing={totalFollowing}
+                            totalFollowed={totalFollowed}
                         />
                     </Card>
                     <Tabs

@@ -49,39 +49,39 @@ function ProfilePage() {
     }, [loggedUser, userId, navigate])
 
     if (user) {
-        const { username, fullname, bio, avatar, totalFollower, totalFollowing, isFollowed,threads } = user
+        const { username, fullname, bio, avatar, totalFollower, totalFollowed, isFollowed,threads } = user
 
-    return (
-        <Grid templateColumns={'repeat(19, 1fr)'}>
-            <GridItem colSpan={12}>
-                <MainBar>
-                    <Link to={'/'}>
-                        <MenuHeading icon={<BiLeftArrowAlt />} text={fullname} gummy />
-                    </Link>
-                    <Card bg={'circle.backdrop'} px={'15px'} color={'circle.font'} mb={'23px'}>
-                        <ProfileCardHeader buttonText={isFollowed ? 'Following' : 'Follow'}  avatar={avatar} isUserProfile={true}/>
-                        <ProfileCardBody username={username} fullname={fullname} bio={bio} py={'15px'} />
-                        <ProfileCardFooter 
-                            totalFollower={totalFollower}
-                            totalFollowing={totalFollowing}
+        return (
+            <Grid templateColumns={'repeat(19, 1fr)'}>
+                <GridItem colSpan={12}>
+                    <MainBar>
+                        <Link to={'/'}>
+                            <MenuHeading icon={<BiLeftArrowAlt />} text={fullname} gummy />
+                        </Link>
+                        <Card bg={'circle.backdrop'} px={'15px'} color={'circle.font'} mb={'23px'}>
+                            <ProfileCardHeader buttonText={isFollowed ? 'Following' : 'Follow'}  avatar={avatar} isUserProfile={true}/>
+                            <ProfileCardBody username={username} fullname={fullname} bio={bio} py={'15px'} />
+                            <ProfileCardFooter 
+                                totalFollower={totalFollower}
+                                totalFollowed={totalFollowed}
+                            />
+                        </Card>
+                        <Tabs
+                            leftTitle={'Threads'}
+                            leftContent={<ThreadList threads={threads} />}
+                            rightTitle={'Media'}
+                            rightContent={<SetMedia threads={threads} />}
                         />
-                    </Card>
-                    <Tabs
-                        leftTitle={'Threads'}
-                        leftContent={<ThreadList threads={threads} />}
-                        rightTitle={'Media'}
-                        rightContent={<SetMedia threads={threads} />}
-                    />
-                </MainBar>
-            </GridItem>
-            <GridItem colSpan={7}>
-                <SideBar>
-                    <SuggestionCard  />
-                    <DeveloperCard />
-                </SideBar>
-            </GridItem>
-        </Grid>
-    )
-}
+                    </MainBar>
+                </GridItem>
+                <GridItem colSpan={7}>
+                    <SideBar>
+                        <SuggestionCard  />
+                        <DeveloperCard />
+                    </SideBar>
+                </GridItem>
+            </Grid>
+        )
+    }
 }
 export default ProfilePage

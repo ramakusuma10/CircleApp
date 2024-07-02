@@ -90,7 +90,7 @@ function SearchPage() {
                                     username={Data.username}
                                     avatar={Data.avatar}
                                     bio={Data.bio}
-                                    followed={Data.isFollowed}
+                                    isFollowed={Data.isFollowed}
                                 />
                                 ))
                             ):(
